@@ -11,7 +11,7 @@ namespace Xqwyf.Domain.Repositories
     /// 只读仓储基础类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public interface IReadOnlyBasicRepository<TAggregateRoot> : IRepository
+    public interface IReadOnlyRepository<TAggregateRoot> : IRepository
        where TAggregateRoot : class, IAggregateRoot
     {
         /// <summary>
