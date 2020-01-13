@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xqwyf.Domain
+namespace Xqwyf.Domain.Entities
 {
     /// <summary>
     /// 实体接口
