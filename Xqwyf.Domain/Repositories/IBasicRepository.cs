@@ -18,7 +18,7 @@ namespace Xqwyf.Domain.Repositories
         where TAggregateRoot : class, IAggregateRoot
     {
         /// <summary>
-        /// Inserts a new entity.
+        /// 插入一个聚合
         /// </summary>
         /// <param name="autoSave">
         /// Set true to automatically save changes to database.
@@ -30,7 +30,7 @@ namespace Xqwyf.Domain.Repositories
         Task<TAggregateRoot> InsertAsync([NotNull] TAggregateRoot entity, bool autoSave = false, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Updates an existing entity. 
+        ///修改一个聚合
         /// </summary>
         /// <param name="autoSave">
         /// Set true to automatically save changes to database.
@@ -42,7 +42,7 @@ namespace Xqwyf.Domain.Repositories
         Task<TAggregateRoot> UpdateAsync([NotNull] TAggregateRoot entity, bool autoSave = false, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Deletes an entity.
+        ///根据删除一个聚合
         /// </summary>
         /// <param name="entity">Entity to be deleted</param>
         /// <param name="autoSave">

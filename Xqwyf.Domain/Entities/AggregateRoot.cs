@@ -5,7 +5,7 @@ using System.Text;
 namespace Xqwyf.Domain.Entities
 {
     /// <summary>
-    /// 聚合基础类
+    /// 所有聚合的基础类
     /// </summary>
     public abstract class AggregateRoot : Entity, IAggregateRoot
     {

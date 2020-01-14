@@ -14,9 +14,9 @@ using Xqwyf.Domain.Entities;
 namespace Xqwyf.Domain.Repositories
 {
     /// <summary>
-    /// 只读仓储基础类
+    /// 只读仓储接口
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TAggregateRoot">聚合类型</typeparam>
     public interface IReadOnlyRepository<TAggregateRoot> : IRepository, IQueryable<TAggregateRoot>
        where TAggregateRoot : class, IAggregateRoot
     {
