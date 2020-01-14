@@ -7,6 +7,7 @@ namespace Xqwyf.Domain.Entities
     /// <summary>
     /// 所有实体的基础类
     /// </summary>
+    [Serializable]
     public abstract class Entity : IEntity
     {
         public abstract object[] GetKeys();

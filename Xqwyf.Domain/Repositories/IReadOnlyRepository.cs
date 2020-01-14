@@ -17,8 +17,8 @@ namespace Xqwyf.Domain.Repositories
     /// 只读仓储接口
     /// </summary>
     /// <typeparam name="TAggregateRoot">聚合类型</typeparam>
-    public interface IReadOnlyRepository<TAggregateRoot> : IRepository, IQueryable<TAggregateRoot>
-       where TAggregateRoot : class, IAggregateRoot
+    public interface IReadOnlyRepository<TEntity> : IRepository, IQueryable<TEntity>
+       where TEntity : class, IEntity
     {
         /// <summary>
         /// 获取所有的聚合根列表
@@ -26,7 +26,7 @@ namespace Xqwyf.Domain.Repositories
         /// <param name="includeDetails">说明是否包括子实体，默认不包括</param>
         /// <param name="cancellationToken">说明操作是否可以取消</param>
         /// <returns></returns>
-        Task<List<TAggregateRoot>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = default);
+        Task<List<TEntity>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = default);
         /// <summary>
         /// 获取聚合根个数
         /// </summary>
@@ -43,7 +43,7 @@ namespace Xqwyf.Domain.Repositories
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
         /// <returns>Entity</returns>
         [NotNull]
-        Task<TAggregateRoot> GetAsync(object id, bool includeDetails = true, CancellationToken cancellationToken = default);
+        Task<TEntity> GetAsync(object id, bool includeDetails = true, CancellationToken cancellationToken = default);
 
 
         /// <summary>
@@ -53,11 +53,11 @@ namespace Xqwyf.Domain.Repositories
         /// <param name="includeDetails">Set true to include all children of this entity</param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
         /// <returns>Entity or null</returns>
-        Task<TAggregateRoot> FindAsync(object id, bool includeDetails = true, CancellationToken cancellationToken = default);
+        Task<TEntity> FindAsync(object id, bool includeDetails = true, CancellationToken cancellationToken = default);
 
 
-        IQueryable<TAggregateRoot> WithDetails();
+        IQueryable<TEntity> WithDetails();
 
-        IQueryable<TAggregateRoot> WithDetails(params Expression<Func<TAggregateRoot, object>>[] propertySelectors);
+        IQueryable<TEntity> WithDetails(params Expression<Func<TEntity, object>>[] propertySelectors);
     }
 }
