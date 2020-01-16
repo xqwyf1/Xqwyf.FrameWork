@@ -14,4 +14,8 @@
     <ProjectReference Include="..\Xqwyf.Domain\Xqwyf.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Xqwyf\Domain\EntityFrameworkCore\EntityHistory\" />
+  </ItemGroup>
+
 </Project>
