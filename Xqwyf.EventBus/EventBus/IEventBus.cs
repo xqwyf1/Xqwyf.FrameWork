@@ -7,7 +7,7 @@ namespace Xqwyf.EventBus
     public interface IEventBus
     {
         /// <summary>
-        /// 事件总线发布（触发）一个事件
+        /// 发布（触发）一个事件
         /// </summary>
         /// <typeparam name="TEvent">事件类型</typeparam>
         /// <param name="eventData">事件相关数据</param>
@@ -24,34 +24,35 @@ namespace Xqwyf.EventBus
         Task PublishAsync(Type eventType, object eventData);
 
         /// <summary>
-        /// 在事件总线中订阅一个事件
-        /// Given action is called for all event occurrences.
+        /// 在事件总线中订阅一个事件;
+        ///订阅事件发生时，将调用给定的action
         /// </summary>
-        /// <param name="action">Action to handle events</param>
-        /// <typeparam name="TEvent">Event type</typeparam>
+        /// <param name="action">调用的Action</param>
+        /// <typeparam name="TEvent">事件类型</typeparam>
+        /// <returns></returns>
         IDisposable Subscribe<TEvent>(Func<TEvent, Task> action)
             where TEvent : class;
 
         /// <summary>
-        /// Registers to an event.
-        /// A new instance of <see cref="THandler"/> object is created for every event occurrence.
+        /// 在事件总线中订阅一个事件;
+        ///事件发生时， 创建<see cref="THandler"/>的新实例 ；
         /// </summary>
-        /// <typeparam name="TEvent">Event type</typeparam>
-        /// <typeparam name="THandler">Type of the event handler</typeparam>
+        /// <typeparam name="TEvent">事件类型</typeparam>
+        /// <typeparam name="THandler">事件处理句柄的类型</typeparam>
         IDisposable Subscribe<TEvent, THandler>()
             where TEvent : class
             where THandler : IEventHandler, new();
 
         /// <summary>
-        /// Registers to an event.
+        /// 在事件总线中订阅一个事件;
         /// Same (given) instance of the handler is used for all event occurrences.
         /// </summary>
-        /// <param name="eventType">Event type</param>
-        /// <param name="handler">Object to handle the event</param>
+        /// <param name="eventType">事件类型</param>
+        /// <param name="handler">事件处理句柄对象</param>
         IDisposable Subscribe(Type eventType, IEventHandler handler);
 
         /// <summary>
-        /// Registers to an event.
+        /// 在事件总线中订阅一个事件;
         /// Given factory is used to create/release handlers
         /// </summary>
         /// <typeparam name="TEvent">Event type</typeparam>
@@ -60,7 +61,7 @@ namespace Xqwyf.EventBus
             where TEvent : class;
 
         /// <summary>
-        /// Registers to an event.
+        ///在事件总线中订阅一个事件;
         /// </summary>
         /// <param name="eventType">Event type</param>
         /// <param name="factory">A factory to create/release handlers</param>
