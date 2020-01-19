@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xqwyf.Core.Timing
+namespace Xqwyf.Timing
 {
     /// <summary>
     /// 时间选项

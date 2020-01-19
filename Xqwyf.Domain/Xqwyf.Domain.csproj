@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Xqwyf.Core\Xqwyf.Core.csproj" />
+    <ProjectReference Include="..\Xqwyf.Guids\Xqwyf.Guids.csproj" />
+    <ProjectReference Include="..\Xqwyf.Timing\Xqwyf.Timing.csproj" />
   </ItemGroup>
 
 </Project>
