@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xqwyf.Domain.Xqwyf.Entities
+namespace Xqwyf.Domain.Entities
 {
 
     /// <summary>

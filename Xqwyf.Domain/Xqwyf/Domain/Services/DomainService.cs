@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 using Xqwyf.Guids;
 using Xqwyf.Timing;
@@ -15,6 +17,13 @@ namespace Xqwyf.Domain.Services
     {
         public IServiceProvider ServiceProvider { get; set; }
         protected readonly object ServiceProviderLock = new object();
+
+        /// <summary>
+        /// 获取指定的Service
+        /// </summary>
+        /// <typeparam name="TService">将被获取的service类型</typeparam>
+        /// <param name="reference">服务存储</param>
+        /// <returns></returns>
         protected TService LazyGetRequiredService<TService>(ref TService reference)
         {
             if (reference == null)
@@ -41,8 +50,8 @@ namespace Xqwyf.Domain.Services
 
 
 
-        protected ILogger Logger => _lazyLogger.Value;
-        private Lazy<ILogger> _lazyLogger => new Lazy<ILogger>(() => LoggerFactory?.CreateLogger(GetType().FullName) ?? NullLogger.Instance, true);
+        protected ILogger Logger => LazyLogger.Value;
+        private Lazy<ILogger> LazyLogger => new Lazy<ILogger>(() => LoggerFactory?.CreateLogger(GetType().FullName) ?? NullLogger.Instance, true);
 
         protected DomainService()
         {

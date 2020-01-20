@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Xqwyf;
 
 namespace Xqwyf.Domain.Entities
 {
-   public  class EntityNotFoundException:Xqwyf.Core.XqExecption
+   public  class EntityNotFoundException:XqException
     {
         /// <summary>
         /// 实体类型

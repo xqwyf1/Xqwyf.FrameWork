@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xqwyf.Guids", "Xqwyf.Guids\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xqwyf.Timing", "Xqwyf.Timing\Xqwyf.Timing.csproj", "{22C04CBD-4697-451D-AA30-C1B4DAA491D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xqwyf.Data", "Xqwyf.Data\Xqwyf.Data.csproj", "{B636AB98-2B94-4634-8180-68C18BD51612}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{22C04CBD-4697-451D-AA30-C1B4DAA491D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22C04CBD-4697-451D-AA30-C1B4DAA491D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22C04CBD-4697-451D-AA30-C1B4DAA491D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B636AB98-2B94-4634-8180-68C18BD51612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B636AB98-2B94-4634-8180-68C18BD51612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B636AB98-2B94-4634-8180-68C18BD51612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B636AB98-2B94-4634-8180-68C18BD51612}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

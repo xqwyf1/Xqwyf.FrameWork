@@ -4,8 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-namespace Xqwyf.Core.Reflection
+
+namespace Xqwyf.Reflection
 {
+    /// <summary>
+    /// 程序集帮助类
+    /// </summary>
     internal static class AssemblyHelper
     {
         /// <summary>

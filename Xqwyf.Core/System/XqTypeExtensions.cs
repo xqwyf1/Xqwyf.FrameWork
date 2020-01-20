@@ -78,6 +78,14 @@ namespace System
             types.Add(type);
         }
 
+
+        /// <summary>
+        /// 判断<paramref name="type"/>是否为基类型
+        /// </summary>
+        /// <param name="type">被判断的类型</param>
+        /// <param name="includeNullables">是否包括空值</param>
+        /// <param name="includeEnums">是否包括Enum</param>
+        /// <returns></returns>
         public static bool IsPrimitiveExtended(this Type type, bool includeNullables = true, bool includeEnums = false)
         {
             if (IsPrimitiveExtendedInternal(type, includeEnums))
@@ -105,6 +113,12 @@ namespace System
             return t;
         }
 
+        /// <summary>
+        /// 判断<paramref name="type"/>是否为基类型
+        /// </summary>
+        /// <param name="type">被判断的类型</param>
+        /// <param name="includeEnums">是否包括Enum</param>
+        /// <returns></returns>
         private static bool IsPrimitiveExtendedInternal(Type type, bool includeEnums)
         {
             if (type.IsPrimitive)

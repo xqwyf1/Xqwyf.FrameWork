@@ -9,7 +9,7 @@ namespace System.Collections.Generic
     /// <summary>
     /// ICollection<T>的扩展类
     /// </summary>
-    public static class AbpCollectionExtensions
+    public static class XqCollectionExtensions
     {
         /// <summary>
         /// 检查当前ICollection<T>是否为空或者没有数据
