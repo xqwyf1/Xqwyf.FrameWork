@@ -24,7 +24,7 @@ namespace Xqwyf.Modularity
         /// <summary>
         /// 创建的模块实例
         /// </summary>
-        IAbpModule Instance { get; }
+        IXqModule Instance { get; }
 
         /// <summary>
         /// 模块是否是外部加载

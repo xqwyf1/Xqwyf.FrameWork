@@ -88,6 +88,10 @@ namespace Xqwyf.Modularity
         #endregion
 
         /// <summary>
+        /// 是否忽略服务注册
+        /// </summary>
+        protected internal bool SkipAutoServiceRegistration { get; protected set; }
+        /// <summary>
         /// 判断当前对象是否为<see cref="XqModule"/>
         /// </summary>
         /// <param name="type">被判断的类型</param>
@@ -107,7 +111,7 @@ namespace Xqwyf.Modularity
         /// 检查对象是否为<see cref="XqModule"/>，如果不是就抛出异常
         /// </summary>
         /// <param name="moduleType">被检查的类型</param>
-        internal static void CheckAbpModuleType(Type moduleType)
+        internal static void CheckXqModuleType(Type moduleType)
         {
             if (!IsXqModule(moduleType))
             {
@@ -121,6 +125,9 @@ namespace Xqwyf.Modularity
             ServiceConfigurationContext.Services.Configure(configureOptions);
         }
 
+        /// <summary>
+        /// 所有服务配置的上下文，服务配置完成后，将被设置为Null
+        /// </summary>
         protected internal ServiceConfigurationContext ServiceConfigurationContext
         {
             get

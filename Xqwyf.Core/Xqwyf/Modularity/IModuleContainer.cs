@@ -12,7 +12,7 @@ namespace Xqwyf.Modularity
     public interface IModuleContainer
     {
         /// <summary>
-        /// 记录所有已经加载的模块
+        /// 记录模块容器中所有已经加载的模块
         /// </summary>
         [NotNull]
         IReadOnlyList<IXqModuleDescriptor> Modules { get; }

@@ -10,7 +10,7 @@ namespace Xqwyf.Domain.Entities
     /// <summary>
     /// 所有聚合的基础类
     /// </summary>
-    public abstract class AggregateRoot : Entity, IAggregateRoot,i
+    public abstract class AggregateRoot : Entity, IAggregateRoot
     {
         /// <summary>
         /// 聚合的扩展属性

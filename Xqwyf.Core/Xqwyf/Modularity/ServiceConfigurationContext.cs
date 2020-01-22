@@ -7,15 +7,18 @@ using JetBrains.Annotations;
 namespace Xqwyf.Modularity
 {
     /// <summary>
-    /// 所有模块服务配置的上下文
+    /// 所有模块服务配置的上下文。只用于模块配置期间
     /// </summary>
     public class ServiceConfigurationContext
     {
         /// <summary>
-        /// 模块的服务集合
+        /// 所有模块相关服务集合
         /// </summary>
         public IServiceCollection Services { get; }
 
+        /// <summary>
+        /// 可以在模块直接共享的数据
+        /// </summary>
         public IDictionary<string, object> Items { get; }
 
         /// <summary>
@@ -30,7 +33,7 @@ namespace Xqwyf.Modularity
         }
 
         /// <summary>
-        /// 创建一个  ServiceConfigurationContext对象
+        /// 创建一个  <see cref="ServiceConfigurationContext"/>对象
         /// </summary>
         /// <param name="services"></param>
         public ServiceConfigurationContext([NotNull] IServiceCollection services)

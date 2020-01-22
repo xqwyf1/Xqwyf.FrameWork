@@ -21,6 +21,13 @@ namespace System.Collections.Generic
         {
             return source == null || source.Count <= 0;
         }
+        /// <summary>
+        /// 如果在<<paramref name="source"/>不存在，则增加<paramref name="item"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="item"></param>
+        /// <returns></returns>
 
         public static bool AddIfNotContains<T>([NotNull] this ICollection<T> source, T item)
         {

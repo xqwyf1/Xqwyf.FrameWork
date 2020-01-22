@@ -5,14 +5,14 @@ using System.Text;
 namespace  Xqwyf.Modularity
 {
     /// <summary>
-    /// 准备进行Config服务的接口
+    ///预配置服务的接口
     /// </summary>
     public interface IPreConfigureServices
     {
         /// <summary>
-        /// 配置服务前的操作
+        /// 预配置服务
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">服务配置上下文</param>
         void PreConfigureServices(ServiceConfigurationContext context);
     }
 }
