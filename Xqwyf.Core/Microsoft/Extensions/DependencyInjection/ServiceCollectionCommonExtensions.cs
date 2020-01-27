@@ -1,63 +1,44 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Linq;
 using System.Reflection;
+
 using JetBrains.Annotations;
+using Xqwyf;
 
 namespace  Microsoft.Extensions.DependencyInjection
 {
-    public static class ServiceCollectionCommonExtensions
-    {
-        /// <summary>
-        /// 判断类型为<typeparamref name="T"/>的Service是否已经存在
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="services"></param>
-        /// <returns></returns>
+	public static class ServiceCollectionCommonExtensions
+	{
+		
+		public static IServiceProvider BuildServiceProviderFromFactory([NotNull] this IServiceCollection services)
+		{
+			XqCheck.NotNull(services, nameof(services));
 
-        public static bool IsAdded<T>(this IServiceCollection services)
-        {
-            return services.IsAdded(typeof(T));
-        }
+			foreach (var service in services)
+			{
+				var factoryInterface = service.ImplementationInstance?.GetType()
+					.GetTypeInfo()
+					.GetInterfaces()
+					.FirstOrDefault(i => i.GetTypeInfo().IsGenericType &&
+										 i.GetGenericTypeDefinition() == typeof(IServiceProviderFactory<>));
 
-        /// <summary>
-        /// 判断类型为<paramref name="type"/>的Service是否已经存在
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static bool IsAdded(this IServiceCollection services, Type type)
-        {
-            return services.Any(d => d.ServiceType == type);
-        }
+				if (factoryInterface == null)
+				{
+					continue;
+				}
 
-        /// <summary>
-        /// 从<paramref name="services"/>获取<typeparamref name="T"/>的实例，如果为空，将抛出异常
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static T GetSingletonInstance<T>(this IServiceCollection services)
-        {
-            var service = services.GetSingletonInstanceOrNull<T>();
-            if (service == null)
-            {
-                throw new InvalidOperationException("Could not find singleton service: " + typeof(T).AssemblyQualifiedName);
-            }
+				var containerBuilderType = factoryInterface.GenericTypeArguments[0];
+				return (IServiceProvider)typeof(ServiceCollectionCommonExtensions)
+					.GetTypeInfo()
+					.GetMethods()
+					.Single(m => m.Name == nameof(BuildServiceProviderFromFactory) && m.IsGenericMethod)
+					.MakeGenericMethod(containerBuilderType)
+					.Invoke(null, new object[] { services, null });
+			}
 
-            return service;
-        }
-
-        /// <summary>
-        /// 从<paramref name="services"/>获取<typeparamref name="T"/>的实例，如果为空，会返回空值
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="services"></param>
-        /// <returns></returns>
-        public static T GetSingletonInstanceOrNull<T>(this IServiceCollection services)
-        {
-            return (T)services
-                .FirstOrDefault(d => d.ServiceType == typeof(T))
-                ?.ImplementationInstance;
-        }
-    }
+			return services.BuildServiceProvider();
+		}
+	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Xqwyf.DependencyInjection;
 using System.Reflection;
 
 namespace  Microsoft.Extensions.DependencyInjection
@@ -29,6 +29,24 @@ namespace  Microsoft.Extensions.DependencyInjection
             return GetOrCreateRegistrarList(services);
         }
 
+        private static ConventionalRegistrarList GetOrCreateRegistrarList(IServiceCollection services)
+        {
+            var conventionalRegistrars = services.GetSingletonInstanceOrNull<IObjectAccessor<ConventionalRegistrarList>>()?.Value;
+            if (conventionalRegistrars == null)
+            {
+                conventionalRegistrars = new ConventionalRegistrarList { new DefaultConventionalRegistrar() };
+                services.AddObjectAccessor(conventionalRegistrars);
+            }
+
+            return conventionalRegistrars;
+        }
+
+        /// <summary>
+        /// 在服务中增加<typeparamref name="T"/>所在的程序集
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddAssemblyOf<T>(this IServiceCollection services)
         {
             return services.AddAssembly(typeof(T).GetTypeInfo().Assembly);

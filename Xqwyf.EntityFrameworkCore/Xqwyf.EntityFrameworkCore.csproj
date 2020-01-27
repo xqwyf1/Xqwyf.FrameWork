@@ -10,8 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Xqwyf.Base\Xqwyf.Base.csproj" />
     <ProjectReference Include="..\Xqwyf.Core\Xqwyf.Core.csproj" />
     <ProjectReference Include="..\Xqwyf.Domain\Xqwyf.Domain.csproj" />
+    <ProjectReference Include="..\Xqwyf.Threading\Xqwyf.Threading.csproj" />
   </ItemGroup>
 
   <ItemGroup>

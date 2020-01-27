@@ -13,10 +13,13 @@ namespace  Xqwyf.DependencyInjection
     /// </summary>
     public interface IXqCommonDbContextRegistrationOptions
     {
+        /// <summary>
+        /// 应用中的所有服务
+        /// </summary>
         IServiceCollection Services { get; }
 
         /// <summary>
-        /// 为当前的DbContext注册默认的Repositories，默认只注册聚合，如果为True，那么注册所有实体
+        /// 为当前的DbContext注册默认的Repositories，默认只注册聚合根，如果为True，那么注册所有实体
         /// </summary>
         /// <param name="includeAllEntities">True:注册所有实体，False：注册聚合</param>
         /// <returns></returns>

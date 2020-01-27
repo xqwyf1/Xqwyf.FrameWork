@@ -4,7 +4,7 @@ using System.Text;
 
 using Xqwyf.Modularity;
 
-namespace Xqwyf.Guids.Xqwyf.Guids
+namespace  Xqwyf.Guids
 {
 
     /// <summary>

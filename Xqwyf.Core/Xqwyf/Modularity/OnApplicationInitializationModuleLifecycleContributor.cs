@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace  Xqwyf.Modularity
+using Xqwyf.App;
+
+
+namespace Xqwyf.Modularity
 {
     public class OnApplicationInitializationModuleLifecycleContributor : ModuleLifecycleContributorBase
     {
@@ -14,6 +17,11 @@ namespace  Xqwyf.Modularity
 
     public class OnApplicationShutdownModuleLifecycleContributor : ModuleLifecycleContributorBase
     {
+        /// <summary>
+        /// <paramref name="module"/>注销时，调用该模块的OnApplicationShutdown操作，进行注销
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="module"></param>
         public override void Shutdown(ApplicationShutdownContext context, IXqModule module)
         {
             (module as IOnApplicationShutdown)?.OnApplicationShutdown(context);

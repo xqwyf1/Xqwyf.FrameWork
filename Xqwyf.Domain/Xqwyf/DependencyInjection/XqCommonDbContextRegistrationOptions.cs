@@ -117,8 +117,8 @@ namespace Xqwyf.DependencyInjection
           Type repositoryImplementationTypeWithoutKey
           )
         {
-            Check.NotNull(repositoryImplementationType, nameof(repositoryImplementationType));
-            Check.NotNull(repositoryImplementationTypeWithoutKey, nameof(repositoryImplementationTypeWithoutKey));
+            XqCheck.NotNull(repositoryImplementationType, nameof(repositoryImplementationType));
+            XqCheck.NotNull(repositoryImplementationTypeWithoutKey, nameof(repositoryImplementationTypeWithoutKey));
 
             DefaultRepositoryImplementationType = repositoryImplementationType;
             DefaultRepositoryImplementationTypeWithoutKey = repositoryImplementationTypeWithoutKey;

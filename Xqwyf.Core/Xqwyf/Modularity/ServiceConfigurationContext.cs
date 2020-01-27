@@ -38,7 +38,7 @@ namespace Xqwyf.Modularity
         /// <param name="services"></param>
         public ServiceConfigurationContext([NotNull] IServiceCollection services)
         {
-            Services = Check.NotNull(services, nameof(services));
+            Services = XqCheck.NotNull(services, nameof(services));
             Items = new Dictionary<string, object>();
         }
     }

@@ -11,7 +11,7 @@ using Xqwyf.Domain.Entities;
 namespace Xqwyf.Domain.Repositories
 {
     /// <summary>
-    /// 仓储实现
+    /// 基础的仓储实现，
     /// </summary>
     /// <typeparam name="TAggregateRoot"></typeparam>
    public abstract  class BaseRepository<TAggregateRoot> : ReadOnlyRepository<TAggregateRoot>, IBasicRepository<TAggregateRoot>

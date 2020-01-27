@@ -21,11 +21,10 @@ namespace Xqwyf.Domain.Repositories
         /// 插入一个聚合
         /// </summary>
         /// <param name="autoSave">
-        /// Set true to automatically save changes to database.
-        /// This is useful for ORMs / database APIs those only save changes with an explicit method call, but you need to immediately save changes to the database.
+        /// 如果为True，将自动保存
         /// </param>
         /// <param name="cancellationToken">A <see cref="T:System.Threading.CancellationToken" /> to observe while waiting for the task to complete.</param>
-        /// <param name="entity">Inserted entity</param>
+        /// <param name="entity">被插入的聚合</param>
         [NotNull]
         Task<TAggregateRoot> InsertAsync([NotNull] TAggregateRoot entity, bool autoSave = false, CancellationToken cancellationToken = default);
 
@@ -53,7 +52,7 @@ namespace Xqwyf.Domain.Repositories
         Task DeleteAsync([NotNull] TAggregateRoot entity, bool autoSave = false, CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Deletes an entity by primary key.
+        /// 根据ID，删除一个聚合根，只能用于唯一主键的实体
         /// </summary>
         /// <param name="id">Primary key of the entity</param>
         /// <param name="autoSave">

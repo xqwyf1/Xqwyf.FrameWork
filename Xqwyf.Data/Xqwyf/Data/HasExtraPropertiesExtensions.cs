@@ -53,7 +53,7 @@ namespace Xqwyf.Data
                 return (TProperty)Convert.ChangeType(value, typeof(TProperty), CultureInfo.InvariantCulture);
             }
 
-            throw new XqExecption("GetProperty<TProperty> does not support non-primitive types. Use non-generic GetProperty method and handle type casting manually.");
+            throw new XqException("GetProperty<TProperty> does not support non-primitive types. Use non-generic GetProperty method and handle type casting manually.");
         }
 
 

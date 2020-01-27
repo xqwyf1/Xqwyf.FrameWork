@@ -2,10 +2,13 @@
 using JetBrains.Annotations;
 using Xqwyf.DependencyInjection;
 
-namespace  Xqwyf.Modularity
+using Xqwyf.App;
+
+
+namespace Xqwyf.Modularity
 {
     /// <summary>
-    /// Module生命周期管理
+    /// Module生命周期管理的定义，分为初始化，关闭
     /// </summary>
     public interface IModuleLifecycleContributor 
     {

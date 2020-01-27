@@ -20,9 +20,9 @@ namespace Xqwyf.Modularity
         /// <returns></returns>
         public IXqModuleDescriptor[] LoadModules( IServiceCollection services,Type startupModuleType,PlugInSourceList plugInSources)
         {
-            Check.NotNull(services, nameof(services));
-            Check.NotNull(startupModuleType, nameof(startupModuleType));
-            Check.NotNull(plugInSources, nameof(plugInSources));
+            XqCheck.NotNull(services, nameof(services));
+            XqCheck.NotNull(startupModuleType, nameof(startupModuleType));
+            XqCheck.NotNull(plugInSources, nameof(plugInSources));
 
             var moduledescs = GetDescriptors(services, startupModuleType, plugInSources);
 
@@ -158,6 +158,7 @@ namespace Xqwyf.Modularity
             {
                 if (module.Instance is XqModule xqModule)
                 {
+                    //是否跳过服务的自动注册，默认为 false
                     if (!xqModule.SkipAutoServiceRegistration)
                     {
                         services.AddAssembly(module.Type.Assembly);

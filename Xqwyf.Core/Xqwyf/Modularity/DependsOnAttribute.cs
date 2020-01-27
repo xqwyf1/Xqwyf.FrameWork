@@ -4,7 +4,7 @@ using JetBrains.Annotations;
 namespace  Xqwyf.Modularity
 {
     /// <summary>
-    /// 定义一个类型的相关依赖
+    /// 定义一个Module的相关依赖
     /// </summary>
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
     public class DependsOnAttribute : Attribute, IDependedTypesProvider

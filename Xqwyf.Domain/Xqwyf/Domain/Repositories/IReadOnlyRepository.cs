@@ -47,7 +47,7 @@ namespace Xqwyf.Domain.Repositories
 
 
         /// <summary>
-        /// Gets an entity with given primary key or null if not found.
+        ///根据ID，查找一个聚合，只能用于具有唯一主键的聚合
         /// </summary>
         /// <param name="id">Primary key of the entity to get</param>
         /// <param name="includeDetails">Set true to include all children of this entity</param>

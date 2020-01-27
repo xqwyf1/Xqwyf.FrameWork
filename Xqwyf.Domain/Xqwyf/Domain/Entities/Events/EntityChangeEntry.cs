@@ -5,7 +5,7 @@ using System.Text;
 namespace Xqwyf.Domain.Entities.Events
 {
     /// <summary>
-    /// 实体变更记录
+    /// 实体变更条目
     /// </summary>
     [Serializable]
     public class EntityChangeEntry

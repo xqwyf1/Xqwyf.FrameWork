@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Xqwyf.Domain.Entities;
+using Xqwyf.Threading;
 
 namespace Xqwyf.Domain.Repositories
 {
@@ -18,6 +19,14 @@ namespace Xqwyf.Domain.Repositories
     public abstract class ReadOnlyRepository<TAggregateRoot> : IReadOnlyRepository<TAggregateRoot>
          where TAggregateRoot : class, IAggregateRoot
     {
+
+        protected virtual CancellationToken GetCancellationToken(CancellationToken preferredValue = default)
+        {
+            return CancellationTokenProvider.FallbackToProvider(preferredValue);
+        }
+
+        public ICancellationTokenProvider CancellationTokenProvider { get; set; }
+        public IServiceProvider ServiceProvider { get; set; }
 
         #region  IQueryable实现
         /// <summary>

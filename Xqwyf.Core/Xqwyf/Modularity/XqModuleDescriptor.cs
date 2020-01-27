@@ -34,8 +34,8 @@ namespace Xqwyf.Modularity
             [NotNull] IXqModule instance,
             bool isLoadedAsPlugIn)
         {
-            Check.NotNull(type, nameof(type));
-            Check.NotNull(instance, nameof(instance));
+            XqCheck.NotNull(type, nameof(type));
+            XqCheck.NotNull(instance, nameof(instance));
 
             ///type与instance的type不一样
             if (!type.GetTypeInfo().IsAssignableFrom(instance.GetType()))

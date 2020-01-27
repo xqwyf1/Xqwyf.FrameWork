@@ -15,7 +15,7 @@ namespace  Xqwyf.Modularity.PlugIns
         [NotNull]
         public static Type[] GetModulesWithAllDependencies([NotNull] this IPlugInSource plugInSource)
         {
-            Check.NotNull(plugInSource, nameof(plugInSource));
+            XqCheck.NotNull(plugInSource, nameof(plugInSource));
 
             return plugInSource
                 .GetModules()

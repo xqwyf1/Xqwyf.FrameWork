@@ -12,9 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Xqwyf.Base\Xqwyf.Base.csproj" />
     <ProjectReference Include="..\Xqwyf.Core\Xqwyf.Core.csproj" />
     <ProjectReference Include="..\Xqwyf.Data\Xqwyf.Data.csproj" />
     <ProjectReference Include="..\Xqwyf.Guids\Xqwyf.Guids.csproj" />
+    <ProjectReference Include="..\Xqwyf.Threading\Xqwyf.Threading.csproj" />
     <ProjectReference Include="..\Xqwyf.Timing\Xqwyf.Timing.csproj" />
   </ItemGroup>
 

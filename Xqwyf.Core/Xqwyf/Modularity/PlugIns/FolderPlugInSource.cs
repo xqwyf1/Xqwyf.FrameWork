@@ -31,7 +31,7 @@ namespace Xqwyf.Modularity.PlugIns
             [NotNull] string folder,
             SearchOption searchOption = SearchOption.TopDirectoryOnly)
         {
-            Check.NotNull(folder, nameof(folder));
+            XqCheck.NotNull(folder, nameof(folder));
 
             Folder = folder;
             SearchOption = searchOption;

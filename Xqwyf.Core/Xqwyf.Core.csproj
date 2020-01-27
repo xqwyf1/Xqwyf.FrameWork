@@ -14,4 +14,9 @@
     <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\Xqwyf.Extensions.csproj" />
+    <ProjectReference Include="..\Xqwyf.Base\Xqwyf.Base.csproj" />
+  </ItemGroup>
+
 </Project>
