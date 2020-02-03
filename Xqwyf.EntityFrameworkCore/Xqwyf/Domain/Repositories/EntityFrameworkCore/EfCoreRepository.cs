@@ -17,10 +17,10 @@ using Xqwyf.Domain.EntityFrameworkCore.DependencyInjection;
 namespace Xqwyf.Domain.Repositories.EntityFrameworkCore
 {
     /// <summary>
-    /// IEfCoreRepository实现
+    /// IEfCoreRepository实现，为用于Ef的仓储
     /// </summary>
-    /// <typeparam name="TDbContext"></typeparam>
-    /// <typeparam name="TAggregateRoot"></typeparam>
+    /// <typeparam name="TDbContext">仓储的DbContext</typeparam>
+    /// <typeparam name="TAggregateRoot">仓储中的聚合根类型</typeparam>
     public class EfCoreRepository<TDbContext, TAggregateRoot> : BaseRepository<TAggregateRoot>, IEfCoreRepository<TAggregateRoot>
     where TDbContext : IEfCoreDbContext
     where TAggregateRoot : class, IAggregateRoot
@@ -52,10 +52,16 @@ namespace Xqwyf.Domain.Repositories.EntityFrameworkCore
             );
         }
 
+     
+
         #endregion
 
         #region IEfCoreRepository实现
         DbContext IEfCoreRepository<TAggregateRoot>.DbContext => DbContext.As<DbContext>();
+
+        /// <summary>
+        /// 获取<typeparamref name="TAggregateRoot"/>仓储，来自<typeparamref name="TDbContext"/>中<typeparamref name="TAggregateRoot"/>仓储定义
+        /// </summary>
         public virtual DbSet<TAggregateRoot> DbSet => DbContext.Set<TAggregateRoot>();
 
         #endregion
@@ -84,6 +90,65 @@ namespace Xqwyf.Domain.Repositories.EntityFrameworkCore
             }
 
             return updatedEntity;
+        }
+
+        public override async Task DeleteAsync(TAggregateRoot entity, bool autoSave = false, CancellationToken cancellationToken = default)
+        {
+            DbSet.Remove(entity);
+
+            if (autoSave)
+            {
+                await DbContext.SaveChangesAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false);
+            }
+        }
+
+        public override async Task DeleteAsync(Expression<Func<TAggregateRoot, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default)
+        {
+            var entities = await GetQueryable()
+                .Where(predicate)
+                .ToListAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false);
+
+            foreach (var entity in entities)
+            {
+                DbSet.Remove(entity);
+            }
+
+            if (autoSave)
+            {
+                await DbContext.SaveChangesAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false);
+            }
+        }
+
+        public override async Task<List<TAggregateRoot>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = default)
+        {
+            return includeDetails
+                ? await WithDetails().ToListAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false) 
+                : await DbSet.ToListAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false);
+        }
+
+        public override async Task<long> GetCountAsync(CancellationToken cancellationToken = default)
+        {
+            return await DbSet.LongCountAsync(GetCancellationToken(cancellationToken)).ConfigureAwait(false);
+        }
+
+        protected override IQueryable<TAggregateRoot> GetQueryable()
+        {
+            return DbSet.AsQueryable();
+        }
+
+        public override IQueryable<TAggregateRoot> WithDetails()
+        {
+            if (XqEntityOptions.DefaultWithDetailsFunc == null)
+            {
+                return base.WithDetails();
+            }
+
+            return XqEntityOptions.DefaultWithDetailsFunc(GetQueryable());
+        }
+
+        public override Task<TAggregateRoot> FindAsync(object id, bool includeDetails = true, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
         }
     }
 }

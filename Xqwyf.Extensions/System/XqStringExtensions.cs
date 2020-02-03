@@ -106,5 +106,46 @@ namespace System
             return str.Substring(str.Length - len, len);
         }
 
+        /// <summary>
+        /// 如果超过最大长度，则从字符串的开头获取字符串的子字符串。如果字符串被截断，它将在字符串末尾添加"..."
+        /// 返回的字符串不能超过maxLength。
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
+        public static string TruncateWithPostfix(this string str, int maxLength)
+        {
+            return TruncateWithPostfix(str, maxLength, "...");
+        }
+
+        /// <summary>
+        /// 如果超过最大长度，则从字符串的开头获取字符串的子字符串。如果字符串被截断，它将在字符串末尾添加给定的后缀。
+        /// 返回的字符串不能超过maxLength。
+        /// </summary>
+        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
+        public static string TruncateWithPostfix(this string str, int maxLength, string postfix)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+
+            if (str == string.Empty || maxLength == 0)
+            {
+                return string.Empty;
+            }
+
+            if (str.Length <= maxLength)
+            {
+                return str;
+            }
+
+            if (maxLength <= postfix.Length)
+            {
+                return postfix.Left(maxLength);
+            }
+
+            return str.Left(maxLength - postfix.Length) + postfix;
+        }
+
+
     }
 }

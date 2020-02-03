@@ -55,7 +55,8 @@ namespace  Xqwyf.App
 
         #region 构造函数
         /// <summary>
-        /// 根据<paramref name="startupModuleType"/>,以及<paramref name="services"/>和<paramref name="optionsAction"/>,创建一个XqApplication
+        /// 创建一个启动模块类型为<paramref name="startupModuleType"/>的应用，
+        /// ,相关的IServiceCollection为<paramref name="services"/>，同时执行<paramref name="optionsAction"/>
         /// </summary>
         /// <param name="startupModuleType">启动模块</param>
         /// <param name="services">该应用所需的服务</param>
@@ -95,16 +96,14 @@ namespace  Xqwyf.App
         /// <summary>
         /// 根据提供的<paramref name="serviceProvider"/>,设置当前应用的<see cref="IServiceProvider"/>
         /// </summary>
-        /// <param name="serviceProvider"></param>
+        /// <param name="serviceProvider">创建的<paramref name="serviceProvider"/></param>
         protected virtual void SetServiceProvider(IServiceProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
             ServiceProvider.GetRequiredService<ObjectAccessor<IServiceProvider>>().Value = ServiceProvider;
         }
 
-        /// <summary>
-        /// 进行Module的初始化
-        /// </summary>
+        
         protected virtual void InitializeModules()
         {
             using (var scope = ServiceProvider.CreateScope())

@@ -14,6 +14,8 @@ namespace Xqwyf.Domain.Entities
 
         Str = 1,
 
-        Deleted = 2
+        Deleted = 2,
+
+        Guids=4,
     }
 }

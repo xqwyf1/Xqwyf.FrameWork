@@ -11,8 +11,8 @@ namespace Xqwyf.Modularity
         /// <summary>
         /// <paramref name="module"/>在初始时，根据<see cref="ApplicationInitializationContext"/>,进行的初始化操作
         /// </summary>
-        /// <param name="context"></param>
-        /// <param name="module"></param>
+        /// <param name="context">进行初始化化时的上下文</param>
+        /// <param name="module">被初始化的Module</param>
         public virtual void Initialize(ApplicationInitializationContext context, IXqModule module)
         {
         }

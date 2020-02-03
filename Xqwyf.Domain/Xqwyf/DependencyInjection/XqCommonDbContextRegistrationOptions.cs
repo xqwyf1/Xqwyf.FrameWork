@@ -9,7 +9,7 @@ using Xqwyf.Domain.Repositories;
 namespace Xqwyf.DependencyInjection
 {
     /// <summary>
-    /// DbContext的注册选项，为Builder
+    /// DbContext的注册时的选项，为Builder
     /// </summary>
     public abstract class XqCommonDbContextRegistrationOptions:IXqCommonDbContextRegistrationOptions
     {

@@ -15,6 +15,9 @@ namespace Xqwyf.Domain.EntityFrameworkCore.DependencyInjection
     public class XqEntityOptions<TAggregateRoot>
           where TAggregateRoot : IAggregateRoot
     {
+        /// <summary>
+        /// 创建<see cref="XqEntityOptions{TAggregateRoot}"/>的空值
+        /// </summary>
         public static XqEntityOptions<TAggregateRoot> Empty { get; } = new XqEntityOptions<TAggregateRoot>();
 
         public Func<IQueryable<TAggregateRoot>, IQueryable<TAggregateRoot>> DefaultWithDetailsFunc { get; set; }

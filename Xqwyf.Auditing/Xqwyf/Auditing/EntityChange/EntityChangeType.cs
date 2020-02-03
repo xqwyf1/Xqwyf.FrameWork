@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Xqwyf.Domain.Entities.Events
+namespace Xqwyf.Auditing
 {
 
     /// <summary>

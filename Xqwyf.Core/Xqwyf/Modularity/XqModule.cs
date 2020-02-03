@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 using System.Reflection;
-
+using Xqwyf.App;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace Xqwyf.Modularity
 {
@@ -119,10 +120,70 @@ namespace Xqwyf.Modularity
             }
         }
 
+        /// <summary>
+        /// 注册用于配置类型为<typeparamref name="TOptions"/>的操作。
+        /// </summary>
+        /// <typeparam name="TOptions"></typeparam>
+        /// <param name="configureOptions"></param>
         protected void Configure<TOptions>(Action<TOptions> configureOptions)
          where TOptions : class
         {
             ServiceConfigurationContext.Services.Configure(configureOptions);
+        }
+
+        /// <summary>
+        /// 注册用于配置类型为<typeparamref name="TOptions"/>并且Options名称为<paramref name="name"/>的操作。
+        /// </summary>
+        /// <typeparam name="TOptions"></typeparam>
+        /// <param name="name"></param>
+        /// <param name="configureOptions"></param>
+        protected void Configure<TOptions>(string name, Action<TOptions> configureOptions)
+          where TOptions : class
+        {
+            ServiceConfigurationContext.Services.Configure(name, configureOptions);
+        }
+
+        /// <summary>
+        /// 注册将与<typeparamref name="TOptions"/>绑定的<paramref name="configuration"/>实例。
+        /// </summary>
+        /// <typeparam name="TOptions"></typeparam>
+        /// <param name="configuration"></param>
+        protected void Configure<TOptions>(IConfiguration configuration)
+           where TOptions : class
+        {
+            ServiceConfigurationContext.Services.Configure<TOptions>(configuration);
+        }
+
+        protected void Configure<TOptions>(IConfiguration configuration, Action<BinderOptions> configureBinder)
+          where TOptions : class
+        {
+            ServiceConfigurationContext.Services.Configure<TOptions>(configuration, configureBinder);
+        }
+
+        protected void Configure<TOptions>(string name, IConfiguration configuration)
+            where TOptions : class
+        {
+            ServiceConfigurationContext.Services.Configure<TOptions>(name, configuration);
+        }
+
+        protected void PreConfigure<TOptions>(Action<TOptions> configureOptions)
+            where TOptions : class
+        {
+            ServiceConfigurationContext.Services.PreConfigure(configureOptions);
+        }
+
+ 
+
+        protected void PostConfigure<TOptions>(Action<TOptions> configureOptions)
+            where TOptions : class
+        {
+            ServiceConfigurationContext.Services.PostConfigure(configureOptions);
+        }
+
+        protected void PostConfigureAll<TOptions>(Action<TOptions> configureOptions)
+            where TOptions : class
+        {
+            ServiceConfigurationContext.Services.PostConfigureAll(configureOptions);
         }
 
         /// <summary>

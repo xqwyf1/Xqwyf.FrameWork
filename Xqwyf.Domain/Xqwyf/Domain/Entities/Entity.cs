@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 
 namespace Xqwyf.Domain.Entities
 {
@@ -10,12 +12,52 @@ namespace Xqwyf.Domain.Entities
     [Serializable]
     public abstract class Entity : IEntity
     {
-        public abstract object[] GetKeys();
+        /// <summary>
+        /// 获取实体的主键列表
+        /// </summary>
+        public IDictionary<Type, String> PriKeys
+        {
+            get
+            {
+                if (priKeys.Count == 0)
+                {
+                    foreach (var item in this.GetType().GetProperties())
+                    {
+                        var priattribute = item.GetCustomAttribute<KeyAttribute>(false);
+
+                        if (priattribute != null)
+                        {
+                            priKeys.Add(item.PropertyType, item.Name);
+                        }
+                    }
+                };
+                return priKeys;
+            }
+        }
+
+        /// <summary>
+        /// 获取主键的字符串
+        /// </summary>
+        /// <returns></returns>
+        public string GetID()
+        {
+            return PriKeys.JoinAsString(",");
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int PriKeyNum
+        {
+            get { return PriKeys.Count; }
+        }
+
+        private static IDictionary<Type, String> priKeys = new Dictionary<Type, String>();
 
         /// <inheritdoc/>
         public override string ToString()
         {
-            return $"[ENTITY: {GetType().Name}] Keys = {GetKeys().ToString()}";
+            return $"[ENTITY: {GetType().Name}] Keys = {PriKeys.ToString()}";
         }
     }
 }

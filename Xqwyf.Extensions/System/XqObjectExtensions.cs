@@ -12,7 +12,7 @@ namespace System
     public static class XqObjectExtensions
     {
         /// <summary>
-        /// 用于将对象投射到类型。
+        /// 用于将对象<paramref name="obj"/>反射到<typeparamref name="T"/>类型的对象。
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="obj">被投射的对象</param>

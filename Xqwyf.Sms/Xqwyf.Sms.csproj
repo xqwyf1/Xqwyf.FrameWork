@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\Xqwyf.Extensions.csproj" />
     <ProjectReference Include="..\Xqwyf.Base\Xqwyf.Base.csproj" />
     <ProjectReference Include="..\Xqwyf.Core\Xqwyf.Core.csproj" />
+    <ProjectReference Include="..\Xqwyf.Extensions\Xqwyf.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

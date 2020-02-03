@@ -13,7 +13,11 @@
     <ProjectReference Include="..\Xqwyf.Base\Xqwyf.Base.csproj" />
     <ProjectReference Include="..\Xqwyf.Core\Xqwyf.Core.csproj" />
     <ProjectReference Include="..\Xqwyf.Domain\Xqwyf.Domain.csproj" />
+    <ProjectReference Include="..\Xqwyf.Extensions\Xqwyf.Extensions.csproj" />
+    <ProjectReference Include="..\Xqwyf.Json\Xqwyf.Json.csproj" />
+    <ProjectReference Include="..\Xqwyf.MultiTenancy\Xqwyf.MultiTenancy.csproj" />
     <ProjectReference Include="..\Xqwyf.Threading\Xqwyf.Threading.csproj" />
+    <ProjectReference Include="..\Xqwyf.Timing\Xqwyf.Timing.csproj" />
   </ItemGroup>
 
   <ItemGroup>

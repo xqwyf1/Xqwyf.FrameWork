@@ -4,10 +4,13 @@ using System.Text;
 
 namespace  Xqwyf.Domain.Entities.Events
 {
+    /// <summary>
+    /// 实体变更报告，用于实体变更后的通知
+    /// </summary>
     public class EntityChangeReport
     {
         /// <summary>
-        /// 被变更的实体清单
+        /// 发生变更的实体清单
         /// </summary>
         public List<EntityChangeEntry> ChangedEntities { get; }
 
@@ -17,8 +20,10 @@ namespace  Xqwyf.Domain.Entities.Events
         /// </summary>
         public List<DomainEventEntry> DomainEvents { get; }
 
-      
 
+        /// <summary>
+        /// 实体变更报告，用于实体变更后的通知
+        /// </summary>
         public EntityChangeReport()
         {
             ChangedEntities = new List<EntityChangeEntry>();

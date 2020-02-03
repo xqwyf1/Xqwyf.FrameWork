@@ -33,5 +33,7 @@ namespace Xqwyf.Domain.Repositories
 
             await DeleteAsync(entity, autoSave, cancellationToken).ConfigureAwait(false);
         }
+
+        public abstract Task DeleteAsync(Expression<Func<TAggregateRoot, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default);
     }
 }

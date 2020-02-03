@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
+using Xqwyf.Auditing;
+
 namespace Xqwyf.Domain.Entities.Events
 {
     /// <summary>

@@ -8,9 +8,9 @@ namespace Xqwyf.Modularity
     public interface IXqModule
     {
         /// <summary>
-        /// 模块中所配置的服务
+        /// 用于在模块加载时，进行模块中服务配置
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">服务加载的上下文</param>
         void ConfigureServices(ServiceConfigurationContext context);
     }
 }

@@ -35,7 +35,7 @@ namespace  Xqwyf.App.Internal
             IXqApplication xqApplication,
             XqApplicationCreationOptions applicationCreationOptions)
         {
-            var moduleLoader = new ModuleLoader();
+     
             var assemblyFinder = new AssemblyFinder(xqApplication);
             var typeFinder = new TypeFinder(assemblyFinder);
 
@@ -48,7 +48,7 @@ namespace  Xqwyf.App.Internal
                 );
             }
 
-            services.TryAddSingleton<IModuleLoader>(moduleLoader);
+            services.TryAddSingleton<IModuleLoader>(new ModuleLoader());
 
             services.TryAddSingleton<IAssemblyFinder>(assemblyFinder);
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace  Xqwyf.Domain.Entities.Events
 {
     /// <summary>
-    /// 事件触发类，用于触发实体变更事件，包括创建前，创建后，修改前，修改后，删除前，删除后
+    ///实体变更事件触发类，用于触发实体变更事件，包括创建前，创建后，修改前，修改后，删除前，删除后
     /// </summary>
     public interface IEntityChangeEventHelper
     {

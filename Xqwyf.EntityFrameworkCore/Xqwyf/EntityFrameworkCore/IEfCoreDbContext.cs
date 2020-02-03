@@ -13,7 +13,7 @@ using Xqwyf.Domain.Entities.Events;
 namespace Xqwyf.EntityFrameworkCore
 {
     /// <summary>
-    /// Ef的DbContext接口
+    /// Ef的DbContext接口定义
     /// </summary>
     public interface IEfCoreDbContext : IDisposable, IInfrastructure<IServiceProvider>, IDbSetCache, IDbContextPoolable
     {

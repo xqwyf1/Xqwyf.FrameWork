@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Xqwyf.Timing
 {
+    /// <summary>
+    /// 时间接口
+    /// </summary>
     public interface IClock
     {
         /// <summary>

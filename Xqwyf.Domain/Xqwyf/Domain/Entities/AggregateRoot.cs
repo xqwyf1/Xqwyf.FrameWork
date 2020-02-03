@@ -14,8 +14,6 @@ namespace Xqwyf.Domain.Entities
         Entity, IAggregateRoot,IGeneratesDomainEvents,IHasExtraProperties, IHasConcurrencyStamp
     {
         #region 构造函数
-
-
         protected AggregateRoot()
         {
             ExtraProperties = new Dictionary<string, object>();
@@ -26,7 +24,7 @@ namespace Xqwyf.Domain.Entities
         #region IHasExtraProperties实现
 
         /// <summary>
-        /// 聚合的扩展属性
+        /// 聚合根的扩展属性
         /// </summary>
         public virtual Dictionary<string, object> ExtraProperties { get; protected set; }
 

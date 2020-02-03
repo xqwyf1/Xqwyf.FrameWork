@@ -34,6 +34,11 @@ namespace Microsoft.Extensions.DependencyInjection
             return services.AddObjectAccessor(new ObjectAccessor<T>());
         }
 
+        public static ObjectAccessor<T> AddObjectAccessor<T>(this IServiceCollection services, T obj)
+        {
+            return services.AddObjectAccessor(new ObjectAccessor<T>(obj));
+        }
+
         /// <summary>
         /// 在服务中增加泛型为<typeparamref name="T"/>的<paramref name="accessor"/>,同时增加<see cref="IObjectAccessor{T}"/>和<see cref="ObjectAccessor{T}"/>
         /// </summary>
@@ -53,6 +58,18 @@ namespace Microsoft.Extensions.DependencyInjection
             services.Insert(0, ServiceDescriptor.Singleton(typeof(IObjectAccessor<T>), accessor));
 
             return accessor;
+        }
+
+        public static T GetObjectOrNull<T>(this IServiceCollection services)
+       where T : class
+        {
+            return services.GetSingletonInstanceOrNull<IObjectAccessor<T>>()?.Value;
+        }
+
+        public static T GetObject<T>(this IServiceCollection services)
+            where T : class
+        {
+            return services.GetObjectOrNull<T>() ?? throw new Exception($"Could not find an object of {typeof(T).AssemblyQualifiedName} in services. Be sure that you have used AddObjectAccessor before!");
         }
     }
 }

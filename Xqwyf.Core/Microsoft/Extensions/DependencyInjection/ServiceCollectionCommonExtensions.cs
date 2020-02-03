@@ -11,7 +11,11 @@ namespace  Microsoft.Extensions.DependencyInjection
 {
 	public static class ServiceCollectionCommonExtensions
 	{
-		
+		/// <summary>
+		/// 通过Factory构建ServiceProvider
+		/// </summary>
+		/// <param name="services"></param>
+		/// <returns></returns>
 		public static IServiceProvider BuildServiceProviderFromFactory([NotNull] this IServiceCollection services)
 		{
 			XqCheck.NotNull(services, nameof(services));
