@@ -9,8 +9,14 @@ namespace Xqwyf.Uow
     /// </summary>
     public interface ISupportsSavingChanges
     {
+        /// <summary>
+        /// <see cref="ISupportsSavingChanges"/>中的SaveChanges
+        /// </summary>
         void SaveChanges();
 
+        /// <summary>
+        /// <see cref="ISupportsSavingChanges"/>中的SaveChanges
+        /// </summary>
         Task SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

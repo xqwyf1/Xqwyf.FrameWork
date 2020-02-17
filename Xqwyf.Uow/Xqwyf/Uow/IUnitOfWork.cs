@@ -30,7 +30,7 @@ namespace  Xqwyf.Uow
         event EventHandler<UnitOfWorkEventArgs> Disposed;
 
         /// <summary>
-        /// 获取Uow的Option
+        /// 获取Uow的配置Option
         /// </summary>
         IXqUnitOfWorkOptions Options { get; }
 

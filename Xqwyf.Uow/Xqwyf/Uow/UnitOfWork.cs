@@ -16,16 +16,19 @@ namespace Xqwyf.Uow
 
         public Guid Id { get; } = Guid.NewGuid();
 
-     
-
-
         /// <summary>
         /// 注销事件
         /// </summary>
         public event EventHandler<UnitOfWorkEventArgs> Disposed;
 
+        /// <summary>
+        /// 获取Uow的配置选项
+        /// </summary>
         public IXqUnitOfWorkOptions Options { get; private set; }
 
+        /// <summary>
+        /// 获取外部的Uow
+        /// </summary>
         public IUnitOfWork Outer { get; private set; }
 
         public bool IsReserved { get; set; }

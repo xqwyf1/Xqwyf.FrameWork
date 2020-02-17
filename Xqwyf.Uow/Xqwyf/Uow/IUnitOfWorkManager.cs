@@ -11,7 +11,7 @@ namespace  Xqwyf.Uow
     public interface IUnitOfWorkManager
     {
         /// <summary>
-        /// 当前的Uow
+        /// 获取当前的Uow
         /// </summary>
         [CanBeNull]
         IUnitOfWork Current { get; }

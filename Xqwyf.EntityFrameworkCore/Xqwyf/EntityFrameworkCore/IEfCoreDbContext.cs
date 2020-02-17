@@ -72,6 +72,11 @@ namespace Xqwyf.EntityFrameworkCore
 
         #region Add
 
+        /// <summary>
+        /// <paramref name="entity"/>的状态被设置为Add，并且能够跟踪，本方法
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         EntityEntry Add([NotNull] object entity);
 
         EntityEntry<TEntity> Add<TEntity>([NotNull] TEntity entity) where TEntity : class;
@@ -92,9 +97,6 @@ namespace Xqwyf.EntityFrameworkCore
         #endregion
 
         #region Find
-
-        
-
         object Find([NotNull] Type entityType, [NotNull] params object[] keyValues);
 
         TEntity Find<TEntity>([NotNull] params object[] keyValues) where TEntity : class;

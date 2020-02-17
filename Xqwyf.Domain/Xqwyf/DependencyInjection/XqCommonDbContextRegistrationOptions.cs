@@ -11,7 +11,7 @@ namespace Xqwyf.DependencyInjection
     /// <summary>
     /// DbContext的注册时的选项，为Builder
     /// </summary>
-    public abstract class XqCommonDbContextRegistrationOptions:IXqCommonDbContextRegistrationOptions
+    public abstract class XqCommonDbContextRegistrationOptions:IXqCommonDbContextRegistrationOptionsBuilder
     {
         /// <summary>
         /// 仓储当前默认的DbContext类型
@@ -62,13 +62,13 @@ namespace Xqwyf.DependencyInjection
         #endregion
 
 
-        public IXqCommonDbContextRegistrationOptions ReplaceDbContextOption<TOtherDbContext>()
+        public IXqCommonDbContextRegistrationOptionsBuilder ReplaceDbContextOption<TOtherDbContext>()
         {
             return ReplaceDbContextOption(typeof(TOtherDbContext));
         }
 
 
-        public IXqCommonDbContextRegistrationOptions ReplaceDbContextOption(Type otherDbContextType)
+        public IXqCommonDbContextRegistrationOptionsBuilder ReplaceDbContextOption(Type otherDbContextType)
         {
             if (!otherDbContextType.IsAssignableFrom(OriginalDbContextType))
             {
@@ -80,19 +80,19 @@ namespace Xqwyf.DependencyInjection
             return this;
         }
 
-        public IXqCommonDbContextRegistrationOptions AddRepositoryOption<TEntity, TRepository>()
+        public IXqCommonDbContextRegistrationOptionsBuilder AddRepositoryOption<TEntity, TRepository>()
         {
             AddCustomRepositoryOption(typeof(TEntity), typeof(TRepository));
 
             return this;
         }
 
-        public IXqCommonDbContextRegistrationOptions AddDefaultRepositoriesOption<TDefaultRepositoryDbContext>(bool includeAllEntities = false)
+        public IXqCommonDbContextRegistrationOptionsBuilder AddDefaultRepositoriesOption<TDefaultRepositoryDbContext>(bool includeAllEntities = false)
         {
             return AddDefaultRepositoriesOption(typeof(TDefaultRepositoryDbContext), includeAllEntities);
         }
 
-        public IXqCommonDbContextRegistrationOptions AddDefaultRepositoriesOption(Type defaultRepositoryDbContextType, bool includeAllEntities = false)
+        public IXqCommonDbContextRegistrationOptionsBuilder AddDefaultRepositoriesOption(Type defaultRepositoryDbContextType, bool includeAllEntities = false)
         {
             if (!defaultRepositoryDbContextType.IsAssignableFrom(OriginalDbContextType))
             {
@@ -104,7 +104,7 @@ namespace Xqwyf.DependencyInjection
             return AddDefaultRepositoriesOption(includeAllEntities);
         }
 
-        public IXqCommonDbContextRegistrationOptions AddDefaultRepositoriesOption(bool includeAllEntities = false)
+        public IXqCommonDbContextRegistrationOptionsBuilder AddDefaultRepositoriesOption(bool includeAllEntities = false)
         {
             RegisterDefaultRepositories = true;
             IncludeAllEntitiesForDefaultRepositories = includeAllEntities;
@@ -112,7 +112,7 @@ namespace Xqwyf.DependencyInjection
             return this;
         }
 
-        public IXqCommonDbContextRegistrationOptions SetDefaultRepositoryClassesOption(
+        public IXqCommonDbContextRegistrationOptionsBuilder SetDefaultRepositoryClassesOption(
           Type repositoryImplementationType,
           Type repositoryImplementationTypeWithoutKey
           )

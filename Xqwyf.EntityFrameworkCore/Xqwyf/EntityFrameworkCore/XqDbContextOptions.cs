@@ -11,27 +11,27 @@ namespace  Xqwyf.EntityFrameworkCore
     public class XqDbContextOptions
     {
         /// <summary>
-        /// 默认的配置前操作
+        /// 获取或者设置默认的预配置操作
         /// </summary>
         internal List<Action<XqDbContextConfigurationContext>> DefaultPreConfigureActions { get; set; }
 
         /// <summary>
-        /// 默认的配置操作
+        /// 获取或者设置默认的配置操作
         /// </summary>
         internal Action<XqDbContextConfigurationContext> DefaultConfigureAction { get; set; }
 
         /// <summary>
-        /// 配置前操作
+        ///获取或者设置预配置操作
         /// </summary>
         internal Dictionary<Type, List<object>> PreConfigureActions { get; set; }
 
         /// <summary>
-        /// 配置时操作
+        /// 获取或者设置配置时操作
         /// </summary>
         internal Dictionary<Type, object> ConfigureActions { get; set; }
 
         /// <summary>
-        /// 创建一个<see cref="XqDbContextOptions"/>
+        /// 创建一个<see cref="XqDbContextOptions"/>，并进行初始化
         /// </summary>
         public XqDbContextOptions()
         {
@@ -41,7 +41,7 @@ namespace  Xqwyf.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 在<see cref="DefaultPreConfigureActions"/>中注册默认的<paramref name="action"/>
+        /// 在<see cref="DefaultPreConfigureActions"/>中注册预配置时使用的默认<paramref name="action"/>
         /// </summary>
         /// <param name="action"></param>
         public void PreConfigure([NotNull] Action<XqDbContextConfigurationContext> action)
@@ -52,7 +52,7 @@ namespace  Xqwyf.EntityFrameworkCore
         }
 
         /// <summary>
-        /// 在<see cref="DefaultConfigureAction"/>中注册<paramref name="action"/>
+        /// 在<see cref="DefaultConfigureAction"/>中注册配置时使用的默认<paramref name="action"/>
         /// </summary>
         /// <param name="action"></param>
         public void Configure([NotNull] Action<XqDbContextConfigurationContext> action)
@@ -62,6 +62,11 @@ namespace  Xqwyf.EntityFrameworkCore
             DefaultConfigureAction = action;
         }
 
+        /// <summary>
+        /// 注册类型为<typeparamref name="TDbContext"/>的预配置
+        /// </summary>
+        /// <typeparam name="TDbContext"></typeparam>
+        /// <param name="action"></param>
         public void PreConfigure<TDbContext>([NotNull] Action<XqDbContextConfigurationContext<TDbContext>> action)
             where TDbContext : XqDbContext<TDbContext>
         {

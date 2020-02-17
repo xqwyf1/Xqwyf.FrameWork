@@ -30,7 +30,7 @@ namespace Xqwyf.EntityFrameworkCore.DependencyInjection
         public DbConnection ExistingConnection { get; set; }
 
         /// <summary>
-        /// 通过<paramref name="connectionString"/>和<paramref name="connectionStringName"/>创建一个<see cref="DbContextCreationContext"/>
+        /// 通过<paramref name="connectionString"/>和<paramref name="connectionStringName"/>创建一个<see cref="DbContextCreationContext"/>(DbContext创建时的上下文)
         /// </summary>
         /// <param name="connectionStringName"></param>
         /// <param name="connectionString"></param>

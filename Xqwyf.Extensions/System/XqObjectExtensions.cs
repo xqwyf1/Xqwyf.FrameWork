@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
+using System.Linq;
 
 using System.Reflection;
 
@@ -54,6 +56,29 @@ namespace System
         public static bool IsFunc<TReturn>(this object obj)
         {
             return obj != null && obj.GetType() == typeof(Func<TReturn>);
+        }
+
+        /// <summary>
+        ///  使用 <see cref="Convert.ChangeType(object,System.Type)"/> 方法，转换当前对象为<typeparamref name="T"/>
+        /// </summary>
+        /// <param name="obj">Object to be converted</param>
+        /// <typeparam name="T">Type of the target object</typeparam>
+        /// <returns>Converted object</returns>
+        public static T To<T>(this object obj)
+            where T : struct
+        {
+            return (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// 检查<paramref name="item"/>是否在<paramref name="list"/>
+        /// </summary>
+        /// <param name="item">Item to check</param>
+        /// <param name="list">List of items</param>
+        /// <typeparam name="T">Type of the items</typeparam>
+        public static bool IsIn<T>(this T item, params T[] list)
+        {
+            return list.Contains(item);
         }
     }
 

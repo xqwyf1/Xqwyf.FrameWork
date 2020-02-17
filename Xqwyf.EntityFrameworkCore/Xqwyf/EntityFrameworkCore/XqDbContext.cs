@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 using Xqwyf.Data;
+
+using Xqwyf.Guids;
 using Xqwyf.Auditing;
 using Xqwyf.Domain.Entities;
 using Xqwyf.Domain.Entities.Events;
@@ -18,7 +20,9 @@ namespace Xqwyf.EntityFrameworkCore
     public abstract class XqDbContext<TDbContext> : DbContext, IEfCoreDbContext
          where TDbContext : DbContext
     {
-
+        /// <summary>
+        /// 实体变更情况记录帮助，可以创建、修改实体的变更列表
+        /// </summary>
         public IEntityHistoryHelper EntityHistoryHelper { get; set; }
 
         public IAuditingManager AuditingManager { get; set; }
@@ -27,7 +31,19 @@ namespace Xqwyf.EntityFrameworkCore
 
         public IEntityChangeEventHelper EntityChangeEventHelper { get; set; }
 
+        public IGuidGenerator GuidGenerator { get; set; }
 
+
+        public ILogger<XqDbContext<TDbContext>> Logger { get; set; }
+
+        protected XqDbContext(DbContextOptions<TDbContext> options)
+         : base(options)
+        {
+            GuidGenerator = SimpleGuidGenerator.Instance;
+            EntityChangeEventHelper = NullEntityChangeEventHelper.Instance;
+            EntityHistoryHelper = NullEntityHistoryHelper.Instance;
+            Logger = NullLogger<AbpDbContext<TDbContext>>.Instance;
+        }
 
         /// <summary>
         /// 取消逻辑删除标记，变更为未删除

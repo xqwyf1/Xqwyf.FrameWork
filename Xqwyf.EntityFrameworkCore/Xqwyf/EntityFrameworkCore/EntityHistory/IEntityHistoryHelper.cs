@@ -5,7 +5,7 @@ using Xqwyf.Auditing;
 namespace  Xqwyf.EntityFrameworkCore.EntityHistory
 {
     /// <summary>
-    /// 实体变更情况记录
+    /// 实体变更情况记录帮助类，创建、修改实体的变更列表
     /// </summary>
     public interface IEntityHistoryHelper
     {
